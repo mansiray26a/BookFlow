@@ -75,7 +75,7 @@ export const AdminFines: React.FC = () => {
                     </td>
                     <td className="p-4 font-bold max-w-xs truncate">{f.issue?.copy?.book?.title}</td>
                     <td className="p-4 font-bold text-amber-600 dark:text-amber-400">{f.overdueDays} Days</td>
-                    <td className="p-4 font-bold text-slate-900 dark:text-white">${f.fineAmount.toFixed(2)}</td>
+                    <td className="p-4 font-bold text-slate-900 dark:text-white">₹{f.fineAmount.toFixed(2)}</td>
                     <td className="p-4">
                       <Badge variant={f.status === 'PAID' ? 'success' : f.status === 'WAIVED' ? 'info' : 'danger'}>
                         {f.status}

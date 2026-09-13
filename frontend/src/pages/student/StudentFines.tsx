@@ -84,10 +84,10 @@ export const StudentFines: React.FC = () => {
                   <div className="text-right">
                     <span className="text-[10px] uppercase font-bold text-slate-400 block">Total Fine</span>
                     <span className="text-xl font-heading font-extrabold text-slate-900 dark:text-white">
-                      ${fine.fineAmount.toFixed(2)}
+                      ₹{fine.fineAmount.toFixed(2)}
                     </span>
                     {fine.paidAmount > 0 && (
-                      <span className="text-[11px] text-emerald-500 block">Paid: ${fine.paidAmount.toFixed(2)}</span>
+                      <span className="text-[11px] text-emerald-500 block">Paid: ₹{fine.paidAmount.toFixed(2)}</span>
                     )}
                   </div>
 
@@ -98,7 +98,7 @@ export const StudentFines: React.FC = () => {
                       variant="primary"
                       size="sm"
                     >
-                      <CreditCard className="w-4 h-4 mr-1.5" /> Pay ${dueBalance.toFixed(2)}
+                      <CreditCard className="w-4 h-4 mr-1.5" /> Pay ₹{dueBalance.toFixed(2)}
                     </Button>
                   )}
                 </div>

@@ -5,6 +5,8 @@ export class BookService {
   static async getBooks(query: {
     search?: string;
     category?: string;
+    branch?: string;
+    department?: string;
     author?: string;
     publisher?: string;
     availability?: string;
@@ -30,6 +32,13 @@ export class BookService {
 
     if (query.category) {
       where.categoryId = query.category;
+    }
+
+    if (query.branch || query.department) {
+      where.category = {
+        ...(query.branch && { branch: query.branch }),
+        ...(query.department && { department: query.department }),
+      };
     }
 
     if (query.author) {

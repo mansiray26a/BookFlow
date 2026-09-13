@@ -18,9 +18,21 @@ export const CatalogPage: React.FC = () => {
   const [meta, setMeta] = useState({ page: 1, limit: 12, total: 0, totalPages: 1 });
 
   const searchQuery = searchParams.get('search') || '';
+  const selectedBranch = searchParams.get('branch') || '';
+  const selectedDepartment = searchParams.get('department') || '';
   const selectedCategory = searchParams.get('category') || '';
   const availabilityFilter = searchParams.get('availability') || '';
   const sortOption = searchParams.get('sort') || 'newest';
+
+  const branches = Array.from(new Set(categories.map(c => c.branch).filter(Boolean))) as string[];
+  const departments = Array.from(
+    new Set(
+      categories
+        .filter(c => !selectedBranch || c.branch === selectedBranch)
+        .map(c => c.department)
+        .filter(Boolean)
+    )
+  ) as string[];
 
   const navigate = useNavigate();
 
@@ -39,6 +51,8 @@ export const CatalogPage: React.FC = () => {
       try {
         const q = new URLSearchParams();
         if (searchQuery) q.set('search', searchQuery);
+        if (selectedBranch) q.set('branch', selectedBranch);
+        if (selectedDepartment) q.set('department', selectedDepartment);
         if (selectedCategory) q.set('category', selectedCategory);
         if (availabilityFilter) q.set('availability', availabilityFilter);
         q.set('sort', sortOption);
@@ -51,7 +65,7 @@ export const CatalogPage: React.FC = () => {
         setLoading(false);
       }
     })();
-  }, [searchQuery, selectedCategory, availabilityFilter, sortOption, meta.page]);
+  }, [searchQuery, selectedBranch, selectedDepartment, selectedCategory, availabilityFilter, sortOption, meta.page]);
 
   const updateParam = (key: string, value: string) => {
     const p = new URLSearchParams(searchParams);
@@ -61,7 +75,7 @@ export const CatalogPage: React.FC = () => {
   };
 
   const clearFilters = () => setSearchParams(new URLSearchParams());
-  const hasFilters = !!(searchQuery || selectedCategory || availabilityFilter);
+  const hasFilters = !!(searchQuery || selectedBranch || selectedDepartment || selectedCategory || availabilityFilter);
 
   const selectClass = 'w-full border border-gray-300 bg-white rounded-md text-sm py-2 px-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500';
 
@@ -96,10 +110,30 @@ export const CatalogPage: React.FC = () => {
             </div>
 
             <div className="space-y-1.5">
+              <label htmlFor="branch-filter" className="block text-xs font-medium text-gray-600 uppercase tracking-wide">Branch</label>
+              <select id="branch-filter" value={selectedBranch} onChange={(e) => { updateParam('branch', e.target.value); updateParam('department', ''); updateParam('category', ''); }} className={selectClass}>
+                <option value="">All Branches</option>
+                {branches.map((b) => (
+                  <option key={b} value={b}>{b}</option>
+                ))}
+              </select>
+            </div>
+
+            <div className="space-y-1.5">
+              <label htmlFor="dept-filter" className="block text-xs font-medium text-gray-600 uppercase tracking-wide">Department</label>
+              <select id="dept-filter" value={selectedDepartment} onChange={(e) => { updateParam('department', e.target.value); updateParam('category', ''); }} className={selectClass} disabled={!selectedBranch && departments.length === 0}>
+                <option value="">All Departments</option>
+                {departments.map((d) => (
+                  <option key={d} value={d}>{d}</option>
+                ))}
+              </select>
+            </div>
+
+            <div className="space-y-1.5">
               <label htmlFor="cat-filter" className="block text-xs font-medium text-gray-600 uppercase tracking-wide">Category</label>
               <select id="cat-filter" value={selectedCategory} onChange={(e) => updateParam('category', e.target.value)} className={selectClass}>
                 <option value="">All Categories</option>
-                {categories.map((c) => (
+                {categories.filter(c => (!selectedBranch || c.branch === selectedBranch) && (!selectedDepartment || c.department === selectedDepartment)).map((c) => (
                   <option key={c.id} value={c.id}>{c.name} ({c._count?.books || 0})</option>
                 ))}
               </select>

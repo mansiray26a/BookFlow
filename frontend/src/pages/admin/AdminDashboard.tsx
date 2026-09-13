@@ -107,7 +107,7 @@ export const AdminDashboard: React.FC = () => {
           },
           {
             label: 'Unpaid Fines',
-            value: `$${metrics.unpaidFinesTotal.toFixed(2)}`,
+            value: `₹${metrics.unpaidFinesTotal.toFixed(2)}`,
             sub: `${metrics.totalStudents + metrics.totalFaculty} members`,
             icon: DollarSign,
             color: 'text-red-600',

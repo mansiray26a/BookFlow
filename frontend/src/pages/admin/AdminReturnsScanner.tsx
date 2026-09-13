@@ -94,7 +94,7 @@ export const AdminReturnsScanner: React.FC = () => {
             <div>
               <span className="text-slate-400 block font-bold uppercase text-[10px]">Fine Assessed</span>
               <span className={`text-lg font-bold ${returnResult.fineAmount > 0 ? 'text-red-400' : 'text-emerald-400'}`}>
-                ${returnResult.fineAmount.toFixed(2)}
+                ₹{returnResult.fineAmount.toFixed(2)}
               </span>
             </div>
 

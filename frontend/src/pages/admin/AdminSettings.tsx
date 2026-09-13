@@ -118,7 +118,7 @@ export const AdminSettings: React.FC = () => {
               required
             />
             <Input
-              label="Fine Per Overdue Day ($)"
+              label="Fine Per Overdue Day (₹)"
               type="number"
               step="0.5"
               value={settings.finePerDay}

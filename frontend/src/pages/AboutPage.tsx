@@ -78,7 +78,7 @@ export const AboutPage: React.FC = () => {
               </li>
               <li className="flex justify-between">
                 <span>Overdue Daily Fine Rate:</span>
-                <span className="font-semibold text-gray-900">$1.00 / day</span>
+                <span className="font-semibold text-gray-900">₹5.00 / day</span>
               </li>
             </ul>
           </div>
@@ -102,7 +102,7 @@ export const AboutPage: React.FC = () => {
               </li>
               <li className="flex justify-between">
                 <span>Overdue Daily Fine Rate:</span>
-                <span className="font-semibold text-gray-900">$0.50 / day</span>
+                <span className="font-semibold text-gray-900">₹5.00 / day</span>
               </li>
             </ul>
           </div>

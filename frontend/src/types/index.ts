@@ -38,6 +38,8 @@ export interface Category {
   name: string;
   code: string;
   description?: string;
+  branch?: string;
+  department?: string;
   _count?: { books: number };
 }
 

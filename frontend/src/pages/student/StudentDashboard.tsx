@@ -107,7 +107,7 @@ export const StudentDashboard: React.FC = () => {
           <div>
             <span className="text-xs text-slate-500 font-semibold uppercase tracking-wider">Unpaid Fines</span>
             <h3 className="text-2xl font-heading font-bold text-red-600 dark:text-red-400">
-              ${totalUnpaidFines.toFixed(2)}
+              ₹{totalUnpaidFines.toFixed(2)}
             </h3>
           </div>
         </Card>
