@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { BookOpen, User, Mail, Lock, Phone, IdCard, GraduationCap, Building } from 'lucide-react';
+import { BookOpen, User, Mail, Lock, Phone, IdCard, GraduationCap, Building, Eye, EyeOff } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { Card } from '../components/ui/Card';
 import { Input } from '../components/ui/Input';
@@ -23,6 +23,8 @@ export const StudentRegisterPage: React.FC = () => {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const { registerStudent } = useAuth();
   const navigate = useNavigate();
@@ -94,12 +96,13 @@ export const StudentRegisterPage: React.FC = () => {
                 value={formData.semester} onChange={handleChange} required />
               <Input id="reg-year" label="Academic Year" name="academicYear" placeholder="2024-2028"
                 value={formData.academicYear} onChange={handleChange} required />
-              <Input id="reg-password" label="Password" name="password" type="password" placeholder="Min. 8 characters"
+              <Input id="reg-password" label="Password" name="password" type={showPassword ? 'text' : 'password'} placeholder="Min. 8 characters"
                 value={formData.password} onChange={handleChange} icon={<Lock className="w-4 h-4" />}
+                endAdornment={<button type="button" onClick={() => setShowPassword(!showPassword)} className="p-1 text-gray-400 hover:text-primary-600 transition" aria-label={showPassword ? 'Hide password' : 'Show password'} title={showPassword ? 'Hide password' : 'Show password'}>{showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}</button>}
                 helpText="At least 8 characters" required />
-              <Input id="reg-confirm-password" label="Confirm Password" name="confirmPassword" type="password"
+              <Input id="reg-confirm-password" label="Confirm Password" name="confirmPassword" type={showConfirmPassword ? 'text' : 'password'}
                 placeholder="Re-enter password" value={formData.confirmPassword} onChange={handleChange}
-                icon={<Lock className="w-4 h-4" />} required />
+                icon={<Lock className="w-4 h-4" />} endAdornment={<button type="button" onClick={() => setShowConfirmPassword(!showConfirmPassword)} className="p-1 text-gray-400 hover:text-primary-600 transition" aria-label={showConfirmPassword ? 'Hide password' : 'Show password'} title={showConfirmPassword ? 'Hide password' : 'Show password'}>{showConfirmPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}</button>} required />
             </div>
 
             <Button id="reg-submit" type="submit" isLoading={loading} variant="primary" className="w-full" size="md">

@@ -94,16 +94,19 @@ export const LoginPage: React.FC = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 icon={<Lock className="w-4 h-4" />}
                 autoComplete="current-password"
+                endAdornment={
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="p-1 text-gray-400 hover:text-primary-600 transition"
+                    aria-label={showPassword ? 'Hide password' : 'Show password'}
+                    title={showPassword ? 'Hide password' : 'Show password'}
+                  >
+                    {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                  </button>
+                }
                 required
               />
-              <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                className="flex items-center gap-1.5 text-xs text-gray-500 hover:text-primary-600 transition"
-              >
-                {showPassword ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
-                {showPassword ? 'Hide' : 'Show'} password
-              </button>
             </div>
 
             <Button id="login-submit" type="submit" isLoading={loading} variant="primary" className="w-full" size="md">
