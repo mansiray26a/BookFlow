@@ -107,7 +107,7 @@ export const FacultyDashboard: React.FC = () => {
                 <div className="flex-1 space-y-2 min-w-0">
                   <h3 className="font-heading font-bold text-sm truncate">{issue.copy?.book?.title}</h3>
                   <p className="text-xs text-slate-500 font-mono">Barcode: {issue.copy?.barcode}</p>
-                  <p className="text-xs text-slate-600 dark:text-slate-300">
+                  <p className="text-xs text-slate-700">
                     Due Date: <strong>{new Date(issue.dueDate).toLocaleDateString()}</strong>
                   </p>
                 </div>

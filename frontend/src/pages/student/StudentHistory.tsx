@@ -40,10 +40,10 @@ export const StudentHistory: React.FC = () => {
           <p className="text-xs text-slate-500">You have no recorded book issues yet.</p>
         </Card>
       ) : (
-        <Card className="overflow-hidden p-0 border-slate-200 dark:border-slate-800">
+        <Card className="overflow-hidden p-0 border-slate-200">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-slate-100 dark:bg-slate-800/60 uppercase font-bold text-slate-500 border-b border-slate-200 dark:border-slate-800">
+              <thead className="bg-slate-100 uppercase font-bold text-slate-700 border-b border-slate-200">
                 <tr>
                   <th className="p-4">Book Title</th>
                   <th className="p-4">Barcode</th>
@@ -53,16 +53,16 @@ export const StudentHistory: React.FC = () => {
                   <th className="p-4">Status</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 dark:divide-slate-800 font-medium">
+              <tbody className="divide-y divide-slate-200 font-medium">
                 {issues.map((issue) => (
-                  <tr key={issue.id} className="hover:bg-slate-50 dark:hover:bg-slate-900/40 transition">
-                    <td className="p-4 font-bold text-slate-900 dark:text-white max-w-xs truncate">
+                  <tr key={issue.id} className="bg-white hover:bg-blue-50 transition">
+                    <td className="p-4 font-bold text-slate-900 max-w-xs truncate">
                       {issue.copy?.book?.title}
                     </td>
-                    <td className="p-4 font-mono text-slate-500">{issue.copy?.barcode}</td>
-                    <td className="p-4 text-slate-600 dark:text-slate-300">{new Date(issue.issueDate).toLocaleDateString()}</td>
-                    <td className="p-4 text-slate-600 dark:text-slate-300">{new Date(issue.dueDate).toLocaleDateString()}</td>
-                    <td className="p-4 text-slate-600 dark:text-slate-300">
+                    <td className="p-4 font-mono text-slate-700">{issue.copy?.barcode}</td>
+                    <td className="p-4 text-slate-700">{new Date(issue.issueDate).toLocaleDateString()}</td>
+                    <td className="p-4 text-slate-700">{new Date(issue.dueDate).toLocaleDateString()}</td>
+                    <td className="p-4 text-slate-700">
                       {issue.returnDate ? new Date(issue.returnDate).toLocaleDateString() : '—'}
                     </td>
                     <td className="p-4">

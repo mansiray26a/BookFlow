@@ -113,10 +113,10 @@ export const AdminBooks: React.FC = () => {
       {loading ? (
         <Skeleton className="h-64 w-full rounded-2xl" />
       ) : (
-        <Card className="overflow-hidden p-0 border-slate-200 dark:border-slate-800">
+        <Card className="overflow-hidden p-0 border-slate-200">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-slate-100 dark:bg-slate-800/60 uppercase font-bold text-slate-500 border-b border-slate-200 dark:border-slate-800">
+              <thead className="bg-slate-100 uppercase font-bold text-slate-700 border-b border-slate-200">
                 <tr>
                   <th className="p-4">Book Title</th>
                   <th className="p-4">ISBN</th>
@@ -125,9 +125,9 @@ export const AdminBooks: React.FC = () => {
                   <th className="p-4">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 dark:divide-slate-800 font-medium">
+              <tbody className="divide-y divide-slate-200 font-medium">
                 {books.map((b) => (
-                  <tr key={b.id} className="hover:bg-slate-50 dark:hover:bg-slate-900/40 transition">
+                  <tr key={b.id} className="bg-white hover:bg-blue-50 transition">
                     <td className="p-4">
                       <div className="flex items-center space-x-3">
                         <img
@@ -136,14 +136,14 @@ export const AdminBooks: React.FC = () => {
                           className="w-10 h-14 object-cover rounded bg-slate-800 shrink-0"
                         />
                         <div className="space-y-0.5">
-                          <h4 className="font-bold text-slate-900 dark:text-white line-clamp-1">{b.title}</h4>
-                          <p className="text-[11px] text-slate-400">
+                          <h4 className="font-bold text-slate-900 line-clamp-1">{b.title}</h4>
+                          <p className="text-[11px] text-slate-600">
                             {b.authors?.map((a) => a.author.name).join(', ') || 'Unknown Author'}
                           </p>
                         </div>
                       </div>
                     </td>
-                    <td className="p-4 font-mono text-slate-500">{b.isbn}</td>
+                    <td className="p-4 font-mono text-slate-700">{b.isbn}</td>
                     <td className="p-4">
                       <Badge variant="default" size="sm">{b.category?.name || 'General'}</Badge>
                     </td>
@@ -193,7 +193,7 @@ export const AdminBooks: React.FC = () => {
               <select
                 value={formData.categoryId}
                 onChange={(e) => setFormData({ ...formData, categoryId: e.target.value })}
-                className="w-full p-2 border rounded-lg dark:bg-slate-900 dark:border-slate-700 text-xs"
+                className="w-full p-2 border border-slate-300 rounded-lg bg-white text-slate-900 text-xs"
                 required
               >
                 <option value="">Select Category</option>
@@ -205,7 +205,7 @@ export const AdminBooks: React.FC = () => {
               <select
                 value={formData.publisherId}
                 onChange={(e) => setFormData({ ...formData, publisherId: e.target.value })}
-                className="w-full p-2 border rounded-lg dark:bg-slate-900 dark:border-slate-700 text-xs"
+                className="w-full p-2 border border-slate-300 rounded-lg bg-white text-slate-900 text-xs"
                 required
               >
                 <option value="">Select Publisher</option>
@@ -217,7 +217,7 @@ export const AdminBooks: React.FC = () => {
             <label className="block font-semibold">Primary Author</label>
             <select
               onChange={(e) => setFormData({ ...formData, authorIds: [e.target.value] })}
-              className="w-full p-2 border rounded-lg dark:bg-slate-900 dark:border-slate-700 text-xs"
+              className="w-full p-2 border border-slate-300 rounded-lg bg-white text-slate-900 text-xs"
               required
             >
               <option value="">Select Author</option>

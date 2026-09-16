@@ -148,12 +148,12 @@ export const StudentDashboard: React.FC = () => {
                   </div>
                   <p className="text-xs text-slate-500 font-mono">Barcode: {issue.copy?.barcode}</p>
 
-                  <div className="text-xs text-slate-600 dark:text-slate-300 space-y-0.5 pt-1">
+                    <div className="text-xs text-slate-700 space-y-0.5 pt-1">
                     <div className="flex items-center space-x-1">
                       <Calendar className="w-3.5 h-3.5 text-blue-500" />
                       <span>Due: <strong>{new Date(issue.dueDate).toLocaleDateString()}</strong></span>
                     </div>
-                    <div className="text-[11px] text-slate-400">Renewals used: {issue.renewalsCount} / 2</div>
+                    <div className="text-[11px] text-slate-600">Renewals used: {issue.renewalsCount} / 2</div>
                   </div>
 
                   <div className="pt-2">

@@ -55,13 +55,13 @@ export const AdminReturnsScanner: React.FC = () => {
           />
 
           <div className="flex items-center space-x-4">
-            <label className="text-xs font-semibold uppercase text-slate-700 dark:text-slate-300">
+            <label className="text-xs font-semibold uppercase text-slate-700">
               Returned Copy Condition:
             </label>
             <select
               value={condition}
               onChange={(e) => setCondition(e.target.value)}
-              className="p-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-xs"
+              className="p-2 rounded-lg border border-slate-300 bg-white text-slate-900 text-xs"
             >
               <option value="GOOD">GOOD Condition</option>
               <option value="NEW">NEW Condition</option>
@@ -87,19 +87,19 @@ export const AdminReturnsScanner: React.FC = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
             <div>
-              <span className="text-slate-400 block font-bold uppercase text-[10px]">Overdue Days</span>
+              <span className="text-slate-300 block font-bold uppercase text-[10px]">Overdue Days</span>
               <span className="text-lg font-bold text-white">{returnResult.overdueDays} Days</span>
             </div>
 
             <div>
-              <span className="text-slate-400 block font-bold uppercase text-[10px]">Fine Assessed</span>
+              <span className="text-slate-300 block font-bold uppercase text-[10px]">Fine Assessed</span>
               <span className={`text-lg font-bold ${returnResult.fineAmount > 0 ? 'text-red-400' : 'text-emerald-400'}`}>
                 ₹{returnResult.fineAmount.toFixed(2)}
               </span>
             </div>
 
             <div>
-              <span className="text-slate-400 block font-bold uppercase text-[10px]">Waitlist Auto-Advancement</span>
+              <span className="text-slate-300 block font-bold uppercase text-[10px]">Waitlist Auto-Advancement</span>
               <Badge variant={returnResult.waitlistNotified ? 'warning' : 'success'}>
                 {returnResult.waitlistNotified ? 'Top Reserved User Notified' : 'Set to Available Shelf'}
               </Badge>

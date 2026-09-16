@@ -115,7 +115,7 @@ export const BookDetailsPage: React.FC = () => {
           <Card className="p-5 space-y-4 text-center">
             <div className="space-y-1">
               <span className="text-xs text-slate-500 uppercase tracking-wider font-semibold">Circulation Standing</span>
-              <p className="text-sm font-bold text-slate-900 dark:text-white">
+              <p className="text-sm font-bold text-slate-900">
                 {book.isAvailable ? `${book.availableCopies} of ${book.totalCopies} copies in shelf` : 'All physical copies currently issued'}
               </p>
             </div>
@@ -146,45 +146,45 @@ export const BookDetailsPage: React.FC = () => {
         <div className="md:col-span-2 space-y-6">
           <div className="space-y-2">
             <Badge variant="info">{book.category?.name || 'General Academic'}</Badge>
-            <h1 className="text-3xl sm:text-4xl font-heading font-extrabold text-slate-900 dark:text-white">
+            <h1 className="text-3xl sm:text-4xl font-heading font-extrabold text-slate-900">
               {book.title}
             </h1>
             {book.subtitle && <p className="text-base text-slate-500">{book.subtitle}</p>}
-            <p className="text-sm font-medium text-blue-600 dark:text-blue-400 pt-1">
+            <p className="text-sm font-medium text-blue-600 pt-1">
               By {book.authors?.map((a) => a.author.name).join(', ') || 'Unknown Author'}
             </p>
           </div>
 
           {/* Key Facts Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 rounded-xl bg-slate-100 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 text-xs">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 rounded-xl bg-slate-100 border border-slate-200 text-xs">
             <div>
-              <span className="text-slate-400 block font-semibold">ISBN Number</span>
-              <span className="font-mono font-bold text-slate-800 dark:text-slate-200">{book.isbn}</span>
+              <span className="text-slate-600 block font-semibold">ISBN Number</span>
+              <span className="font-mono font-bold text-slate-800">{book.isbn}</span>
             </div>
             <div>
-              <span className="text-slate-400 block font-semibold">Publication Year</span>
-              <span className="font-bold text-slate-800 dark:text-slate-200">{book.publicationYear}</span>
+              <span className="text-slate-600 block font-semibold">Publication Year</span>
+              <span className="font-bold text-slate-800">{book.publicationYear}</span>
             </div>
             <div>
-              <span className="text-slate-400 block font-semibold">Publisher</span>
-              <span className="font-bold text-slate-800 dark:text-slate-200">{book.publisher?.name || 'Academic'}</span>
+              <span className="text-slate-600 block font-semibold">Publisher</span>
+              <span className="font-bold text-slate-800">{book.publisher?.name || 'Academic'}</span>
             </div>
             <div>
-              <span className="text-slate-400 block font-semibold">Edition / Pages</span>
-              <span className="font-bold text-slate-800 dark:text-slate-200">{book.edition || '1st Ed'} ({book.pages || 400}p)</span>
+              <span className="text-slate-600 block font-semibold">Edition / Pages</span>
+              <span className="font-bold text-slate-800">{book.edition || '1st Ed'} ({book.pages || 400}p)</span>
             </div>
           </div>
 
           {/* Description */}
           <div className="space-y-2">
             <h3 className="font-heading font-bold text-lg">Synopsis & Overview</h3>
-            <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            <p className="text-sm text-slate-700 leading-relaxed">
               {book.description || 'No detailed description available for this catalog record.'}
             </p>
           </div>
 
           {/* Physical Copies Register */}
-          <div className="space-y-4 pt-4 border-t border-slate-200 dark:border-slate-800">
+          <div className="space-y-4 pt-4 border-t border-slate-200">
             <h3 className="font-heading font-bold text-lg flex items-center space-x-2">
               <Barcode className="w-5 h-5 text-blue-500" />
               <span>Physical Inventory Register</span>
@@ -194,10 +194,10 @@ export const BookDetailsPage: React.FC = () => {
               {book.copies?.map((copy) => (
                 <div
                   key={copy.id}
-                  className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex items-center justify-between text-xs"
+                  className="p-3 rounded-xl border border-slate-200 bg-white flex items-center justify-between text-xs"
                 >
                   <div className="space-y-0.5">
-                    <span className="font-mono font-bold text-slate-900 dark:text-white">{copy.barcode}</span>
+                    <span className="font-mono font-bold text-slate-900">{copy.barcode}</span>
                     <p className="text-slate-500 flex items-center space-x-1 text-[11px]">
                       <MapPin className="w-3 h-3 text-slate-400" />
                       <span>{copy.shelfLocation}</span>
@@ -216,7 +216,7 @@ export const BookDetailsPage: React.FC = () => {
       {/* Confirmation Modal */}
       {modalMsg && (
         <Modal isOpen={!!modalMsg} onClose={() => setModalMsg(null)} title={modalMsg.title}>
-          <p className="text-sm text-slate-600 dark:text-slate-300 mb-6">{modalMsg.body}</p>
+          <p className="text-sm text-slate-700 mb-6">{modalMsg.body}</p>
           <div className="flex justify-end">
             <Button onClick={() => setModalMsg(null)} variant="primary" size="sm">
               Understood

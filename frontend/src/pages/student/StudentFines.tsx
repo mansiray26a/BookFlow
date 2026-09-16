@@ -71,19 +71,19 @@ export const StudentFines: React.FC = () => {
                     <Badge variant={fine.status === 'PAID' ? 'success' : fine.status === 'WAIVED' ? 'info' : 'danger'}>
                       {fine.status}
                     </Badge>
-                    <span className="text-xs font-mono text-slate-400">ID: {fine.id.substring(0, 8)}...</span>
+                    <span className="text-xs font-mono text-slate-600">ID: {fine.id.substring(0, 8)}...</span>
                   </div>
-                  <h3 className="font-heading font-bold text-base text-slate-900 dark:text-white">
+                  <h3 className="font-heading font-bold text-base text-slate-900">
                     {fine.issue?.copy?.book?.title || 'Library Overdue Charge'}
                   </h3>
                   <p className="text-xs text-slate-500">{fine.reason || 'Overdue return liability'}</p>
-                  <p className="text-[11px] text-slate-400">Assessed Date: {new Date(fine.createdAt).toLocaleDateString()}</p>
+                  <p className="text-[11px] text-slate-600">Assessed Date: {new Date(fine.createdAt).toLocaleDateString()}</p>
                 </div>
 
-                <div className="flex items-center space-x-6 shrink-0 border-t md:border-t-0 md:border-l border-slate-100 dark:border-slate-800 pt-3 md:pt-0 md:pl-6">
+                <div className="flex items-center space-x-6 shrink-0 border-t md:border-t-0 md:border-l border-slate-200 pt-3 md:pt-0 md:pl-6">
                   <div className="text-right">
-                    <span className="text-[10px] uppercase font-bold text-slate-400 block">Total Fine</span>
-                    <span className="text-xl font-heading font-extrabold text-slate-900 dark:text-white">
+                    <span className="text-[10px] uppercase font-bold text-slate-600 block">Total Fine</span>
+                    <span className="text-xl font-heading font-extrabold text-slate-900">
                       ₹{fine.fineAmount.toFixed(2)}
                     </span>
                     {fine.paidAmount > 0 && (

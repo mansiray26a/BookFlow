@@ -64,7 +64,7 @@ export const StudentReservations: React.FC = () => {
                   <Badge variant={res.status === 'NOTIFIED' ? 'success' : res.status === 'PENDING' ? 'warning' : 'default'}>
                     {res.status}
                   </Badge>
-                  <span className="text-xs font-semibold text-blue-600 dark:text-blue-400">
+                  <span className="text-xs font-semibold text-blue-600">
                     Queue Position #{res.queuePosition}
                   </span>
                 </div>

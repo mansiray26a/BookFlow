@@ -53,10 +53,10 @@ export const AdminFines: React.FC = () => {
       {loading ? (
         <Skeleton className="h-64 w-full rounded-2xl" />
       ) : (
-        <Card className="overflow-hidden p-0 border-slate-200 dark:border-slate-800">
+        <Card className="overflow-hidden p-0 border-slate-200">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-slate-100 dark:bg-slate-800/60 uppercase font-bold text-slate-500 border-b border-slate-200 dark:border-slate-800">
+              <thead className="bg-slate-100 uppercase font-bold text-slate-700 border-b border-slate-200">
                 <tr>
                   <th className="p-4">Borrower Name</th>
                   <th className="p-4">Book Copy</th>
@@ -66,16 +66,16 @@ export const AdminFines: React.FC = () => {
                   <th className="p-4">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 dark:divide-slate-800 font-medium">
+              <tbody className="divide-y divide-slate-200 font-medium">
                 {fines.map((f) => (
-                  <tr key={f.id} className="hover:bg-slate-50 dark:hover:bg-slate-900/40 transition">
+                  <tr key={f.id} className="bg-white hover:bg-blue-50 transition">
                     <td className="p-4">
-                      <div className="font-bold text-slate-900 dark:text-white">{f.user?.fullName}</div>
-                      <div className="text-[11px] text-slate-400">{f.user?.email}</div>
+                      <div className="font-bold text-slate-900">{f.user?.fullName}</div>
+                      <div className="text-[11px] text-slate-600">{f.user?.email}</div>
                     </td>
                     <td className="p-4 font-bold max-w-xs truncate">{f.issue?.copy?.book?.title}</td>
-                    <td className="p-4 font-bold text-amber-600 dark:text-amber-400">{f.overdueDays} Days</td>
-                    <td className="p-4 font-bold text-slate-900 dark:text-white">₹{f.fineAmount.toFixed(2)}</td>
+                    <td className="p-4 font-bold text-amber-600">{f.overdueDays} Days</td>
+                    <td className="p-4 font-bold text-slate-900">₹{f.fineAmount.toFixed(2)}</td>
                     <td className="p-4">
                       <Badge variant={f.status === 'PAID' ? 'success' : f.status === 'WAIVED' ? 'info' : 'danger'}>
                         {f.status}
@@ -105,7 +105,7 @@ export const AdminFines: React.FC = () => {
             placeholder="e.g. Medical emergency exception approved by Dean"
             value={waiverReason}
             onChange={(e) => setWaiverReason(e.target.value)}
-            className="w-full p-2.5 rounded-lg border dark:bg-slate-900 dark:border-slate-700 text-xs"
+            className="w-full p-2.5 rounded-lg border border-slate-300 bg-white text-slate-900 text-xs"
             required
           />
           <div className="flex justify-end space-x-2 pt-2">
