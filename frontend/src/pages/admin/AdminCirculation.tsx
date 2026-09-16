@@ -188,13 +188,13 @@ export const AdminCirculation: React.FC = () => {
               </div>
 
               <div className="space-y-1.5">
-                <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+                <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700">
                   Assign to Student / Faculty Member
                 </label>
                 <select
                   value={userId}
                   onChange={(e) => setUserId(e.target.value)}
-                  className="w-full p-2.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-xs focus:ring-2 focus:ring-blue-500"
+                  className="w-full p-2.5 rounded-lg border border-slate-300 bg-white text-slate-900 text-xs focus:outline-none focus:ring-2 focus:ring-blue-500"
                   required
                 >
                   <option value="">Select Borrower Account</option>
@@ -243,28 +243,28 @@ export const AdminCirculation: React.FC = () => {
             ) : scannedCopy ? (
               <div className="space-y-3 text-xs">
                 <div>
-                  <span className="text-slate-400 block text-[10px] uppercase font-bold">Book Title</span>
+                  <span className="text-slate-300 block text-[10px] uppercase font-bold">Book Title</span>
                   <h4 className="font-bold text-base text-white">{scannedCopy.book?.title}</h4>
                 </div>
                 <div className="grid grid-cols-2 gap-2">
                   <div>
-                    <span className="text-slate-400 block text-[10px] uppercase font-bold">Barcode</span>
+                    <span className="text-slate-300 block text-[10px] uppercase font-bold">Barcode</span>
                     <span className="font-mono text-blue-400 font-bold">{scannedCopy.barcode}</span>
                   </div>
                   <div>
-                    <span className="text-slate-400 block text-[10px] uppercase font-bold">Shelf Location</span>
+                    <span className="text-slate-300 block text-[10px] uppercase font-bold">Shelf Location</span>
                     <span className="text-white">{scannedCopy.shelfLocation}</span>
                   </div>
                 </div>
                 <div>
-                  <span className="text-slate-400 block text-[10px] uppercase font-bold">Status</span>
+                  <span className="text-slate-300 block text-[10px] uppercase font-bold">Status</span>
                   <Badge variant={scannedCopy.status === 'AVAILABLE' ? 'success' : 'danger'}>
                     {scannedCopy.status}
                   </Badge>
                 </div>
               </div>
             ) : (
-              <div className="text-center py-10 text-slate-500 text-xs">
+              <div className="text-center py-10 text-slate-300 text-xs">
                 Scan or enter a barcode above to inspect physical copy availability.
               </div>
             )}
