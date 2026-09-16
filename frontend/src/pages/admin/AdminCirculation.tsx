@@ -230,41 +230,41 @@ export const AdminCirculation: React.FC = () => {
           </Card>
 
           {/* Live Barcode Scanned Copy Info */}
-          <Card className="p-6 space-y-4 bg-slate-900 text-white border-slate-800">
-            <div className="flex items-center space-x-2 border-b border-slate-800 pb-3">
-              <Barcode className="w-5 h-5 text-blue-400" />
+          <Card className="p-6 space-y-4 bg-white text-slate-900 border-slate-200">
+            <div className="flex items-center space-x-2 border-b border-slate-200 pb-3">
+              <Barcode className="w-5 h-5 text-blue-600" />
               <h3 className="font-heading font-bold text-sm">Scanned Copy Inspector</h3>
             </div>
 
             {scanError ? (
-              <div className="p-3 bg-red-500/10 border border-red-500/20 text-red-400 rounded-lg text-xs">
+              <div className="p-3 bg-red-50 border border-red-200 text-red-700 rounded-lg text-xs">
                 {scanError}
               </div>
             ) : scannedCopy ? (
               <div className="space-y-3 text-xs">
                 <div>
-                  <span className="text-slate-300 block text-[10px] uppercase font-bold">Book Title</span>
-                  <h4 className="font-bold text-base text-white">{scannedCopy.book?.title}</h4>
+                  <span className="text-slate-600 block text-[10px] uppercase font-bold">Book Title</span>
+                  <h4 className="font-bold text-base text-slate-900">{scannedCopy.book?.title}</h4>
                 </div>
                 <div className="grid grid-cols-2 gap-2">
                   <div>
-                    <span className="text-slate-300 block text-[10px] uppercase font-bold">Barcode</span>
-                    <span className="font-mono text-blue-400 font-bold">{scannedCopy.barcode}</span>
+                    <span className="text-slate-600 block text-[10px] uppercase font-bold">Barcode</span>
+                    <span className="font-mono text-blue-600 font-bold">{scannedCopy.barcode}</span>
                   </div>
                   <div>
-                    <span className="text-slate-300 block text-[10px] uppercase font-bold">Shelf Location</span>
-                    <span className="text-white">{scannedCopy.shelfLocation}</span>
+                    <span className="text-slate-600 block text-[10px] uppercase font-bold">Shelf Location</span>
+                    <span className="text-slate-800">{scannedCopy.shelfLocation}</span>
                   </div>
                 </div>
                 <div>
-                  <span className="text-slate-300 block text-[10px] uppercase font-bold">Status</span>
+                  <span className="text-slate-600 block text-[10px] uppercase font-bold">Status</span>
                   <Badge variant={scannedCopy.status === 'AVAILABLE' ? 'success' : 'danger'}>
                     {scannedCopy.status}
                   </Badge>
                 </div>
               </div>
             ) : (
-              <div className="text-center py-10 text-slate-300 text-xs">
+              <div className="text-center py-10 text-slate-600 text-xs">
                 Scan or enter a barcode above to inspect physical copy availability.
               </div>
             )}
